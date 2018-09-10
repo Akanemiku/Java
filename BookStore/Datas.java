@@ -1,5 +1,7 @@
-//æ¨¡æ‹Ÿçš„æ•°æ®ä»“åº“
+package BookStore;
+
+//Ä£ÄâµÄÊı¾İ²Ö¿â
 public class Datas{
-	//ä¿å­˜æ‰€æœ‰å›¾ä¹¦ä¿¡æ¯çš„æ•°ç»„ - å›¾ä¹¦ä»“åº“
-	public static Book[] BookStore = new Book[999]
+	//±£´æËùÓĞÍ¼ÊéĞÅÏ¢µÄÊı×é - Í¼Êé²Ö¿â
+	public static Book[] BookStore = new Book[999];
 }

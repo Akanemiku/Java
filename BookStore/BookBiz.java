@@ -1,25 +1,94 @@
-//å›¾ä¹¦ä¸šåŠ¡ç±»
-//åŒ…å«å¯¹å›¾ä¹¦ä»¥åŠå›¾ä¹¦æ•°ç»„çš„åŸºæœ¬æ“ä½œ
+package BookStore;
+
+//Í¼ÊéÒµÎñÀà(ÒµÎñ²ã¾¡Á¿²»Ğ´´òÓ¡(½çÃæ²ãĞ´))
+//°üº¬¶ÔÍ¼ÊéÒÔ¼°Í¼ÊéÊı×éµÄ»ù±¾²Ù×÷
 public class BookBiz{
 	
-	//è·å¾—å›¾ä¹¦ä»“åº“ä¸­Datas.BookStoreæ•°ç»„ä¸­å›¾ä¹¦å¯¹è±¡çš„ä¸ªæ•°
+	//»ñµÃÍ¼Êé²Ö¿âÖĞDatas.BookStoreÊı×éÖĞÍ¼Êé¶ÔÏóµÄ¸öÊı
 	public int getBookCount(){
 		int count = 0;
 		for(Book book :  Datas.BookStore){
 			if(book == null) break;
-			count++
+			count++;
+		}
+		return count;
+	}
+	public int getBookCount(Book ...books){
+		int count = 0;
+		for(Book book :  Datas.BookStore){
+			if(book == null) break;
+			count++;
 		}
 		return count;
 	}
 	
-	//å°†ä¼ å…¥çš„å›¾ä¹¦å¯¹è±¡æ”¾ç½®åˆ°å›¾ä¹¦ä»“åº“(æ•°ç»„)ä¸­å»
+	//½«´«ÈëµÄÍ¼Êé¶ÔÏó·ÅÖÃµ½Í¼Êé²Ö¿â(Êı×é)ÖĞÈ¥
 	public boolean addBook(Book book){
 		int bookCount = getBookCount();
 		if(Datas.BookStore.length == bookCount){
 			return false;
 		}
-		//å¦‚æœä»“åº“ä¸æ»¡ï¼Œå°±å°†ä¼ å…¥çš„å›¾ä¹¦å¯¹è±¡æ”¾ç½®åœ¨æ•°ç»„çš„æœ€åä¸€ä¸ªä½ç½®(ç¬¬ä¸€ä¸ªénullä½ç½®)
+		//Èç¹û²Ö¿â²»Âú£¬¾Í½«´«ÈëµÄÍ¼Êé¶ÔÏó·ÅÖÃÔÚÊı×éµÄ×îºóÒ»¸öÎ»ÖÃ(µÚÒ»¸ö·ÇnullÎ»ÖÃ)
 		Datas.BookStore[bookCount] = book;
+		return true;
+	}
+	
+	//É¾³ı´«ÈëµÄÍ¼Êé¶ÔÏó
+	public boolean delBook(Book book){
+		int bookCount = getBookCount();
+		int delIndex = -1;	//ÒªÉ¾³ıÔªËØµÄÏÂ±ê
+		for(int i=0;i<bookCount;i++){
+			//if(book.getBookId().equals(Datas.BookStore[i].getBookId())){
+			if(book.equals(Datas.BookStore[i])){	
+				delIndex = i;
+				break;
+			}
+		}
+		if(delIndex == -1){
+			return false;//Ã»ÓĞÕÒµ½ÒªÉ¾³ıµÄÔªËØÊ±£¬Ö±½Ó½áÊø·½·¨£¬·µ»Øfalse
+		}
+		//Ö´ĞĞÊı×éÉ¾³ıÌ×Â·
+		for(int i=delIndex;i<bookCount;i++){
+			Datas.BookStore[i] = Datas.BookStore[i+1];
+		}
+		//½«×îºóÒ»¸öÔªËØÖÃÎªnull
+		Datas.BookStore[bookCount-1] = null;
+		return true;
+	}
+	
+	//Í¨¹ıÍ¼Êéid²éÕÒ¶ÔÓ¦µÄÍ¼Êé¶ÔÏó
+	public Book findById(String bookId){
+		int bookCount = getBookCount();
+		for(int i=0;i<bookCount;i++){
+			if(bookId.equals(Datas.BookStore[i].getBookId())){
+				return Datas.BookStore[i];
+			}
+		}
+		return null;
+	}
+	
+	//Îª²Ö¿âÖĞÏÖÓĞµÄÍ¼ÊéÔö¼Ó¿â´æ
+	public boolean inStore(String bookId,int count){
+		Book book = findById(bookId);
+		//Èç¹ûÈë¿âµÄbookId²»´æÔÚ
+		if(null == book){
+			return false;
+		}
+		//Ôö¼Ó¿â´æ(ÒıÓÃ´«µİ)
+		book.setCount(book.getCount() + count);
+		return true;
+	}
+	
+	//½«²Ö¿âÏÖÓĞ¿â´æ¼õÉÙ
+	public boolean outStore(String bookId,int count){
+		Book book = findById(bookId);
+		if(null == book){
+			return false;
+		}
+		if(book.getCount() < count){
+			return false;
+		}
+		book.setCount(book.getCount() - count);
 		return true;
 	}
 }

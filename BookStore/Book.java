@@ -1,13 +1,87 @@
+package BookStore;
+
 public class Book{
-	private String bookId;	//å†…éƒ¨ç¼–å·
-	private String bookName;//åç§°
-	private String isbn;	//å‡ºç‰ˆå·
-	private String type; 	//ç±»å‹
-	private String author;	//ä½œè€…
-	private String publisher;//å‡ºç‰ˆç¤¾
-	private int count;		//å½“å‰ä¹¦ç±çš„åº“å­˜é‡-(å…¥åº“-å¢åŠ åº“å­˜)ã€(å‡ºåº“ã€å‡å°‘åº“å­˜çš„æ“ä½œ)
+	private String bookId;	//ÄÚ²¿±àºÅ
+	private String bookName;//Ãû³Æ
+	private String isbn;	//³ö°æºÅ
+	private String type; 	//ÀàĞÍ
+	private String author;	//×÷Õß
+	private String publisher;//³ö°æÉç
+	private int count;		//µ±Ç°Êé¼®µÄ¿â´æÁ¿ - (Èë¿â - Ôö¼Ó¿â´æ)¡¢(³ö¿â - ¼õÉÙ¿â´æµÄ²Ù×÷)
 	
 	public Book(){
 		
 	}
+	
+	/**
+	 * ÖØĞ´ÁËÍ¼Êé¶ÔÏóµÄequals·½·¨£¬·½±ãºóĞø½øĞĞµÄ¶ÔÏóºãµÈĞÔ±È½Ï
+	 * book1.equals(book2)
+	 */
+	 @Override
+	 public boolean equals(Object obj){
+		 //Èç¹û´«ÈëµÄ²ÎÊıÎª¿Õ »ò ²»ÊÇBookÀàµÄÊµÀı£¬Ö±½Ó²»ĞèÒªÅĞ¶Ï£¬·µ»Øfalse
+		 if(null == obj || !(obj instanceof Book)){
+			 return false;
+		 }
+		 Book book = (Book)obj;
+		 return bookId.equals(book.getBookId());
+	 }
+
+	public String getBookId() {
+		return bookId;
+	}
+
+	public void setBookId(String bookId) {
+		this.bookId = bookId;
+	}
+
+	public String getBookName() {
+		return bookName;
+	}
+
+	public void setBookName(String bookName) {
+		this.bookName = bookName;
+	}
+
+	public String getIsbn() {
+		return isbn;
+	}
+
+	public void setIsbn(String isbn) {
+		this.isbn = isbn;
+	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public String getAuthor() {
+		return author;
+	}
+
+	public void setAuthor(String author) {
+		this.author = author;
+	}
+
+	public String getPublisher() {
+		return publisher;
+	}
+
+	public void setPublisher(String publisher) {
+		this.publisher = publisher;
+	}
+
+	public int getCount() {
+		return count;
+	}
+
+	public void setCount(int count) {
+		this.count = count;
+	}
+	 
+	 
 }
