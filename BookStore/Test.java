@@ -17,7 +17,7 @@ public class Test {
 	public static void show() {
 		BookBiz bookBiz = new BookBiz();
 		if(bookBiz.getBookCount()==0) {
-			System.out.println("≤÷ø‚ø’ø’»Á“≤£°");
+			System.out.println("‰ªìÂ∫ìÁ©∫Á©∫Â¶Ç‰πüÔºÅ");
 			return;
 		}
 		for(int i=0;i<bookBiz.getBookCount();i++) {
