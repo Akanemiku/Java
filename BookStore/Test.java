@@ -11,25 +11,7 @@ public class Test {
 
 		BookBiz bookBiz = new BookBiz();
 		bookBiz.addBook(book1);
-//		show();
-//		bookBiz.inStore("0001", 50000);
-//		show();
-//		
-//		Book book2 = new Book();
-//		book2.setBookName("No game No life");
-//		book2.setBookId("0002");
-//		book2.setCount(50);
-//		bookBiz.addBook(book2);
-//		show();
-//		
-//		bookBiz.outStore("0001", 40000);
-//		show();
-//		
-//		bookBiz.delBook(book2);
-//		show();
-		
 		BookView bookView = new BookView();
-		show();
 	}
 	
 	public static void show() {
