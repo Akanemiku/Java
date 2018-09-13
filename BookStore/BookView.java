@@ -109,8 +109,11 @@ public class BookView{
 		}else {
 			System.out.println("请输入入库数：");
 			int inStoreNum = input.nextInt();
-			bookBiz.inStore(bookId,inStoreNum);
-			System.out.println("入库成功！");
+			if(bookBiz.inStore(bookId,inStoreNum)==false){
+				System.out.println("入库失败");
+			}else {
+				System.out.println("入库成功！");
+			}
 		}
 		return inStoreBook;
 	}
