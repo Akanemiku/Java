@@ -74,6 +74,9 @@ public class BookBiz{
 		if(null == book){
 			return false;
 		}
+		if(count < 0) {
+			return false;
+		}
 		//增加库存(引用传递)
 		book.setCount(book.getCount() + count);
 		return true;
